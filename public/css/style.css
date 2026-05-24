@@ -1,0 +1,673 @@
+/* === 基础重置与字体 === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --paper-bg: #f5f0e6;
+  --paper-dark: #e8e0d0;
+  --ink: #2c1810;
+  --ink-light: #5c4030;
+  --seal-red: #8b2500;
+  --seal-dark: #5c1800;
+  --gold: #c9a96e;
+  --line: #d4c8b0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  background: var(--paper-bg);
+  color: var(--ink);
+  line-height: 1.9;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* === 纸张纹理背景 === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === 首页：信的入口 === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+}
+
+.letter-envelope {
+  width: 100%;
+  max-width: 720px;
+  background: linear-gradient(135deg, #faf6ee 0%, #f0eadd 100%);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 48px 40px 56px;
+  position: relative;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.04),
+    0 4px 12px rgba(0,0,0,0.06),
+    0 16px 48px rgba(0,0,0,0.08);
+  transform: rotate(-0.3deg);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.letter-envelope:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.04),
+    0 8px 24px rgba(0,0,0,0.08),
+    0 24px 64px rgba(0,0,0,0.10);
+}
+
+/* 火漆印章 */
+.wax-seal {
+  width: 72px;
+  height: 72px;
+  background: radial-gradient(circle at 35% 35%, #a52a00, var(--seal-red));
+  border-radius: 50%;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset -2px -2px 6px rgba(0,0,0,0.2),
+    inset 2px 2px 6px rgba(255,255,255,0.1),
+    0 3px 8px rgba(139,37,0,0.3);
+  position: relative;
+}
+
+.wax-seal::after {
+  content: "情";
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 28px;
+  color: rgba(255,255,255,0.85);
+  font-weight: bold;
+}
+
+/* 首页标题 */
+.hero-title {
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--ink);
+  letter-spacing: 0.15em;
+}
+
+.hero-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--ink-light);
+  margin-bottom: 40px;
+  letter-spacing: 0.1em;
+}
+
+.hero-quote {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--ink-light);
+  font-style: italic;
+  max-width: 480px;
+  margin: 0 auto 48px;
+  line-height: 2;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 20px 0;
+}
+
+/* === 导航：三封信 === */
+.nav-letters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.nav-letter {
+  display: block;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.4s ease;
+  position: relative;
+  text-align: center;
+}
+
+.nav-letter::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 16px;
+  height: 16px;
+  background: var(--seal-red);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.nav-letter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: var(--seal-red);
+}
+
+.nav-letter:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-letter-number {
+  font-size: 0.8rem;
+  color: var(--seal-red);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.nav-letter-title {
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.nav-letter-desc {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+/* === 展厅通用布局 === */
+.page-header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.page-header .wax-seal {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+}
+
+.page-header .wax-seal::after {
+  font-size: 20px;
+}
+
+.page-header h1 {
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 2rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: var(--ink-light);
+  font-size: 0.9rem;
+}
+
+/* === 内容容器 === */
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* === 时间线（展厅二） === */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--seal-red), var(--gold));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+  padding-left: 24px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: var(--seal-red);
+  border-radius: 50%;
+  border: 2px solid var(--paper-bg);
+  box-shadow: 0 0 0 2px var(--seal-red);
+}
+
+.timeline-year {
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 1.1rem;
+  color: var(--seal-red);
+  margin-bottom: 4px;
+}
+
+.timeline-text {
+  color: var(--ink-light);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* === 展柜卡片 === */
+.card {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 28px 24px;
+  margin-bottom: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.card-title {
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-title::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--seal-red);
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+.card-subtitle {
+  font-size: 0.8rem;
+  color: var(--seal-red);
+  margin-bottom: 14px;
+  letter-spacing: 0.05em;
+}
+
+.card-body {
+  color: var(--ink-light);
+  font-size: 0.9rem;
+  line-height: 2;
+}
+
+.card-body p {
+  margin-bottom: 12px;
+}
+
+/* 引用样式 */
+.quote {
+  border-left: 3px solid var(--seal-red);
+  padding-left: 16px;
+  margin: 16px 0;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* === 可展开内容 === */
+.expandable {
+  border-top: 1px dashed var(--line);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.expand-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--seal-red);
+  font-size: 0.85rem;
+  user-select: none;
+  padding: 8px 0;
+}
+
+.expand-toggle:hover {
+  opacity: 0.8;
+}
+
+.expand-icon {
+  transition: transform 0.3s ease;
+  font-size: 0.7rem;
+}
+
+.expand-toggle.open .expand-icon {
+  transform: rotate(90deg);
+}
+
+.expand-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.expand-content.open {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+/* === 展厅三：信笺 === */
+.letter-showcase {
+  background: linear-gradient(135deg, #faf6ee 0%, #f0eadd 100%);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 32px 28px;
+  margin-bottom: 32px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.letter-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--seal-red), var(--gold), var(--seal-red));
+  opacity: 0.3;
+}
+
+.letter-label {
+  font-size: 0.75rem;
+  color: var(--seal-red);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.letter-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* === 信笺正文 === */
+.letter-text {
+  font-family: "Kaiti SC", "KaiTi", serif;
+  font-size: 1.05rem;
+  line-height: 2.2;
+  color: var(--ink);
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+/* 多封信连续展示时的分隔 */
+.letter-text + .letter-text {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px dashed var(--line);
+}
+
+/* 信内落款 */
+.letter-signature {
+  display: block;
+  text-align: right;
+  margin-top: 16px;
+  font-size: 1rem;
+  color: var(--ink-light);
+  letter-spacing: 0.05em;
+}
+
+/* 多封信标签（如【第一封】【第二封】） */
+.letter-text strong:first-child {
+  display: inline-block;
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 0.85rem;
+  color: var(--seal-red);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+/* 展开内容区内部间距优化 */
+.expand-content .letter-text:last-child {
+  margin-bottom: 8px;
+}
+
+/* === 返回按钮 === */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-light);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+
+.back-link:hover {
+  color: var(--seal-red);
+}
+
+.next-hall {
+  text-align: center;
+  margin: 40px 0 24px;
+}
+
+.next-hall .back-link {
+  display: inline-flex;
+  font-size: 1rem;
+  gap: 8px;
+}
+
+/* === 页脚 === */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-light);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+.footer-note {
+  margin-top: 4px;
+  opacity: 0.6;
+}
+
+.js-fade {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js-fade.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === 返回顶部 === */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--seal-red);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(139,37,0,0.3);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === 展厅五：锚点目录 === */
+.toc-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.toc-letters a {
+  display: inline-block;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f5f0e6 100%);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink-light);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.toc-letters a:hover {
+  border-color: var(--seal-red);
+  color: var(--seal-red);
+}
+
+/* === 动画 === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-delay-1 { animation-delay: 0.1s; }
+.fade-in-delay-2 { animation-delay: 0.2s; }
+.fade-in-delay-3 { animation-delay: 0.3s; }
+.fade-in-delay-4 { animation-delay: 0.4s; }
+
+/* === 分隔线 === */
+.divider {
+  text-align: center;
+  margin: 40px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line);
+}
+
+.divider span {
+  display: inline-block;
+  background: var(--paper-bg);
+  padding: 0 16px;
+  position: relative;
+  color: var(--seal-red);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+
+/* === 响应式 === */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  .letter-envelope {
+    padding: 32px 24px;
+  }
+  .content {
+    padding: 0 16px 60px;
+  }
+}
+
+/* 移动端时间线优化 */
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: 20px;
+  }
+  .timeline::before {
+    left: 4px;
+  }
+  .timeline-item {
+    padding-left: 16px;
+  }
+  .timeline-item::before {
+    left: -20px;
+    width: 8px;
+    height: 8px;
+  }
+  .back-to-top {
+    right: 12px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* 打印优化 */
+@media print {
+  body {
+    background: white;
+  }
+  body::before {
+    display: none;
+  }
+}

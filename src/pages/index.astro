@@ -1,17 +1,65 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="给阿嬷的情书" description="电影《给阿嬷的情书》幕后花絮珍藏站">
+  <section class="hero">
+    <div class="letter-envelope fade-in">
+      <div class="wax-seal"></div>
+      <h1 class="hero-title">给阿嬷的情书</h1>
+      <p class="hero-subtitle">幕后珍藏站 · 信的背面</p>
+      <p class="hero-quote">
+        "两个素未谋面的女子，在海的两边，<br>
+        因为有一样的人生信念，隔空支撑了对方的一生。"
+      </p>
+
+      <nav class="nav-letters">
+        <a href="/gallery/timeline" class="nav-letter fade-in fade-in-delay-1">
+          <div class="nav-letter-number">展厅一</div>
+          <div class="nav-letter-title">时间线</div>
+          <div class="nav-letter-desc">
+            从1930到2018<br>
+            跨越近百年的人生轨迹
+          </div>
+        </a>
+        <a href="/gallery/people" class="nav-letter fade-in fade-in-delay-2">
+          <div class="nav-letter-number">展厅二</div>
+          <div class="nav-letter-title">那些人</div>
+          <div class="nav-letter-desc">
+            从各自生活走来<br>
+            与角色相遇的入戏时刻
+          </div>
+        </a>
+        <a href="/gallery/story" class="nav-letter fade-in fade-in-delay-3">
+          <div class="nav-letter-number">展厅三</div>
+          <div class="nav-letter-title">那些事</div>
+          <div class="nav-letter-desc">
+            象征物解读与剧情解析<br>
+            观众常问问题
+          </div>
+        </a>
+        <a href="/gallery/behind-the-scenes" class="nav-letter fade-in fade-in-delay-4">
+          <div class="nav-letter-number">展厅四</div>
+          <div class="nav-letter-title">那些片场</div>
+          <div class="nav-letter-desc">
+            被剪掉的光影与倒推的遗憾<br>
+            未散的片场余温
+          </div>
+        </a>
+        <a href="/gallery/letters" class="nav-letter fade-in">
+          <div class="nav-letter-number">展厅五</div>
+          <div class="nav-letter-title">那些信</div>
+          <div class="nav-letter-desc">
+            电影中每一封侨批<br>
+            信面、信背与创作解读
+          </div>
+        </a>
+      </nav>
+    </div>
+
+    <footer class="footer">
+      <p>所有内容来自剧组一手采访 · 路演 · 节目 · 杂志</p>
+      <p class="footer-note">《给阿嬷的情书》DEAR YOU · 蓝鸿春导演作品</p>
+    </footer>
+  </section>
+</BaseLayout>
