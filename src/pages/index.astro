@@ -14,7 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
 
       <nav class="nav-letters">
-        <a href="/gallery/timeline" class="nav-letter fade-in fade-in-delay-1">
+        <a href={`${import.meta.env.BASE_URL}gallery/timeline`} class="nav-letter fade-in fade-in-delay-1">
           <div class="nav-letter-number">展厅一</div>
           <div class="nav-letter-title">时间线</div>
           <div class="nav-letter-desc">
@@ -22,7 +22,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             跨越近百年的人生轨迹
           </div>
         </a>
-        <a href="/gallery/people" class="nav-letter fade-in fade-in-delay-2">
+        <a href={`${import.meta.env.BASE_URL}gallery/people`} class="nav-letter fade-in fade-in-delay-2">
           <div class="nav-letter-number">展厅二</div>
           <div class="nav-letter-title">那些人</div>
           <div class="nav-letter-desc">
@@ -30,7 +30,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             与角色相遇的入戏时刻
           </div>
         </a>
-        <a href="/gallery/story" class="nav-letter fade-in fade-in-delay-3">
+        <a href={`${import.meta.env.BASE_URL}gallery/story`} class="nav-letter fade-in fade-in-delay-3">
           <div class="nav-letter-number">展厅三</div>
           <div class="nav-letter-title">那些事</div>
           <div class="nav-letter-desc">
@@ -38,7 +38,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             观众常问问题
           </div>
         </a>
-        <a href="/gallery/behind-the-scenes" class="nav-letter fade-in fade-in-delay-4">
+        <a href={`${import.meta.env.BASE_URL}gallery/behind-the-scenes`} class="nav-letter fade-in fade-in-delay-4">
           <div class="nav-letter-number">展厅四</div>
           <div class="nav-letter-title">那些片场</div>
           <div class="nav-letter-desc">
@@ -46,7 +46,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             未散的片场余温
           </div>
         </a>
-        <a href="/gallery/letters" class="nav-letter fade-in">
+        <a href={`${import.meta.env.BASE_URL}gallery/letters`} class="nav-letter fade-in">
           <div class="nav-letter-number">展厅五</div>
           <div class="nav-letter-title">那些信</div>
           <div class="nav-letter-desc">

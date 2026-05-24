@@ -10,7 +10,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <div class="content">
-    <a href="/" class="back-link">← 返回入口</a>
+    <a href={`${import.meta.env.BASE_URL}`} class="back-link">← 返回入口</a>
 
     <!-- 阶段一：故土与离别 -->
     <div class="divider"><span>故土与离别 · 1930–1948</span></div>
@@ -89,7 +89,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
 
     <div class="next-hall">
-      <a href="/gallery/people" class="back-link">下一展厅：展厅二 · 那些人 →</a>
+      <a href={`${import.meta.env.BASE_URL}gallery/people`} class="back-link">下一展厅：展厅二 · 那些人 →</a>
     </div>
 
     <footer class="footer">

@@ -17,7 +17,7 @@ const { title, description = '电影《给阿嬷的情书》幕后花絮珍藏�
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href={`${import.meta.env.BASE_URL}css/style.css`}>
   <style is:inline>
     .toc-letters a.active {
       border-color: var(--seal-red);
@@ -27,6 +27,6 @@ const { title, description = '电影《给阿嬷的情书》幕后花絮珍藏�
 </head>
 <body>
   <slot />
-  <script src="/js/main.js" is:inline></script>
+  <script src={`${import.meta.env.BASE_URL}js/main.js`} is:inline></script>
 </body>
 </html>
