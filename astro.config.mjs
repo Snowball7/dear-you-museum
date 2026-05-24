@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://snowball7.github.io',
-  base: '/dear-you-museum/',
+  site: 'https://dear-you-museum.pages.dev',
   output: 'static',
 });
